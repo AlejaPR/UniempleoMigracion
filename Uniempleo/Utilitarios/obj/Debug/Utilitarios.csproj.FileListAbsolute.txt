@@ -1,0 +1,15 @@
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Uniempleo\Utilitarios\bin\Debug\Utilitarios.dll
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Uniempleo\Utilitarios\bin\Debug\Utilitarios.pdb
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Uniempleo\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Uniempleo\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Uniempleo\Utilitarios\obj\Debug\Utilitarios.dll
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Uniempleo\Utilitarios\obj\Debug\Utilitarios.pdb
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Ejercicios\Proyecto\Uniempleo\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Ejercicios\Proyecto\Uniempleo\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Ejercicios\Proyecto\Uniempleo\Utilitarios\obj\Debug\Utilitarios.dll
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Ejercicios\Proyecto\Uniempleo\Utilitarios\obj\Debug\Utilitarios.pdb
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Ejercicios\Proyecto\Uniempleo\Utilitarios\bin\Debug\Utilitarios.dll
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Ejercicios\Proyecto\Uniempleo\Utilitarios\bin\Debug\Utilitarios.pdb
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Ejercicios\Proyecto\Uniempleo\Utilitarios\bin\Debug\Newtonsoft.Json.dll
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Ejercicios\Proyecto\Uniempleo\Utilitarios\bin\Debug\Newtonsoft.Json.xml
+D:\Documentos\universidad\Septimo\Ingenieria Software II\Ejercicios\Proyecto\Uniempleo\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
