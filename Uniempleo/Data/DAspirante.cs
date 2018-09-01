@@ -468,7 +468,7 @@ namespace Data
                 dataAdapter.SelectCommand.Parameters.Add("_lugarg", NpgsqlDbType.Text).Value = aspif.Lugar;
                 dataAdapter.SelectCommand.Parameters.Add("_fechag", NpgsqlDbType.Timestamp).Value = aspif.Fecha;
                 dataAdapter.SelectCommand.Parameters.Add("_telefonog", NpgsqlDbType.Text).Value = aspif.TelefonoF;
-                dataAdapter.SelectCommand.Parameters.Add("_documentos", NpgsqlDbType.Varchar).Value = aspif.Documento;
+                dataAdapter.SelectCommand.Parameters.Add("_documentos", NpgsqlDbType.Varchar).Value = aspif.DocumentoF;
                 dataAdapter.SelectCommand.Parameters.Add("_habilidad1", NpgsqlDbType.Text).Value = aspif.Habilidad1;
                 dataAdapter.SelectCommand.Parameters.Add("_habilidad2", NpgsqlDbType.Text).Value = aspif.Habilidad2;
                 dataAdapter.SelectCommand.Parameters.Add("_habilidad3", NpgsqlDbType.Text).Value = aspif.Habilidad3;
@@ -578,6 +578,71 @@ namespace Data
             return datosE;
 
         }
+        public DataTable obtenerTipoe(Int32 idper)
+        {
+            DataTable perfil = new DataTable();
+            NpgsqlConnection conexion = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("uniempleo.f_obtener_tipoe", conexion);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_id_asp", NpgsqlDbType.Integer).Value = idper;
+
+                conexion.Open();
+                dataAdapter.Fill(perfil);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conexion != null)
+                {
+                    conexion.Close();
+                }
+            }
+            return perfil;
+        }
+
+        public DataTable EditarTipoe(Int32 Idtipo, String termino, String horario, String tiempo, Int32 id_tipo_empleo, String termino_empleo, String horario_empleo, String tiempo_empleo)
+        {
+            DataTable datosE = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("uniempleo.f_modificar_tipoe", conection);
+
+                dataAdapter.SelectCommand.Parameters.Add("_id_tipo", NpgsqlDbType.Integer).Value = id_tipo_empleo;
+                dataAdapter.SelectCommand.Parameters.Add("_termino", NpgsqlDbType.Text).Value = termino_empleo;
+                dataAdapter.SelectCommand.Parameters.Add("_horario", NpgsqlDbType.Text).Value = horario_empleo;
+                dataAdapter.SelectCommand.Parameters.Add("_tiempo", NpgsqlDbType.Text).Value = tiempo_empleo;
+
+
+
+
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(datosE);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return datosE;
+        }
+
+
 
     }
 }
