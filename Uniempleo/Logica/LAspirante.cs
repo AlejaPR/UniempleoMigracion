@@ -123,14 +123,14 @@ namespace Logica
             return muestraO;
         }
 
-        public UAspirante RTipoEmpleo(Int32 idRegistro, String TerminoCon, String Horario, String TiempoEmpleo, String Hoja, String Sesion)
+        public UAspirante RTipoEmpleo(UAspirante tipoEmpleo, Int32 idRegistro, String TerminoCon, String Horario, String TiempoEmpleo, String Hoja, String Sesion)
         {
             DAspirante tipoE = new DAspirante();
             DataTable Tipoempleo = tipoE.TipoE(idRegistro, TerminoCon, Horario, TiempoEmpleo, Hoja, Sesion);
 
             UAspirante enviarm = new UAspirante();
 
-            //enviarm.Url = @"<script type='text/javascript'>Redir_VerOfertas();</script>";
+            //enviarm.Url = @"<script type='text/javascript'>Redir_InicioAspirante();</script>";
             enviarm.Url = "VerOfertas.aspx";
             enviarm.Mensaje = "Registrado correctamente";
             return enviarm;
@@ -217,7 +217,7 @@ namespace Logica
 	   DataTable academica = formacion.FormacionA(faspi);
 
             UAspirante enviarm = new UAspirante();
-            enviarm.Url = "VerOfertas.aspx";
+            enviarm.Url = @"<script type='text/javascript'>Dire_expl();</script>";
             enviarm.Mensaje = "Registrado correctamente";
             enviarm.MensajeError = "NO SE PUEDE REGISTRAR UNA FECHA ANTERIOR A ESTA";
             return enviarm;
@@ -333,10 +333,49 @@ namespace Logica
             {
                 DAspirante registrar = new DAspirante();
                 registrar.FormacionA(control);
-                validacion.Url = @"<script type = 'text/javascript'>Dire_Tipo();</script>";
+                validacion.Url2 = "ExperienciaL.aspx";
+                validacion.Url = @"<script type = 'text/javascript'>Dire_expl();</script>";
 
             }
             return validacion;
+        }
+
+        public DataTable mostrartipoe(Int32 idf)
+        {
+
+
+            DAspirante datos = new DAspirante();
+            DataTable muestratipo = datos.obtenerTipoe(idf);
+            UAspirante capturar = new UAspirante();
+
+
+
+
+
+
+            capturar.Url = "Modificar_H_Aspi.aspx";
+            return muestratipo;
+
+
+        }
+
+        public DataTable editartipoe(Int32 Idf, String terminoc, String horarioT, String TiempoC, Int32 id_tipo_empleo, String termino_empleo, String horario_empleo, String tiempo_empleo)
+        {
+
+
+            DAspirante datos = new DAspirante();
+            DataTable muestra = datos.EditarTipoe( Idf,  terminoc,  horarioT,  TiempoC, id_tipo_empleo, termino_empleo, horario_empleo, tiempo_empleo);
+            UAspirante capturar = new UAspirante();
+
+
+
+
+
+
+            capturar.Url = "Modificar_H_Aspi.aspx";
+            return muestra;
+
+
         }
 
     }
