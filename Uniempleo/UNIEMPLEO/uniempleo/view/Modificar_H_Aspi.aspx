@@ -355,11 +355,8 @@
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="GV_tipoe" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="nuevoEstilo9" GridLines="Horizontal" DataSourceID="ODS_tipoe">
+                <asp:GridView ID="GV_tipoe" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="nuevoEstilo9" GridLines="Horizontal" DataSourceID="ODS_tipoe" AutoGenerateEditButton="True">
                     <AlternatingRowStyle BackColor="#F7F7F7" />
-                    <Columns>
-                        <asp:CommandField ShowEditButton="True" />
-                    </Columns>
                     <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
                     <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
                     <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
@@ -370,15 +367,20 @@
                     <SortedDescendingCellStyle BackColor="#D8D8F0" />
                     <SortedDescendingHeaderStyle BackColor="#3E3277" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_tipoe" runat="server" SelectMethod="obtenerTipoe" TypeName="Dmodificar" UpdateMethod="EditarTipoe">
+                <asp:ObjectDataSource ID="ODS_tipoe" runat="server" SelectMethod="obtenerTipoe" TypeName="Data.DAspirante" UpdateMethod="EditarTipoe">
                     <SelectParameters>
                         <asp:SessionParameter Name="idper" SessionField="id" Type="Int32" />
                     </SelectParameters>
-                    <UpdateParameters>
+					<UpdateParameters>
                         <asp:Parameter Name="Idtipo" Type="Int32" />
                         <asp:Parameter Name="termino" Type="String" />
                         <asp:Parameter Name="horario" Type="String" />
                         <asp:Parameter Name="tiempo" Type="String" />
+					    <asp:Parameter Name="id_tipo_empleo" Type="Int32" />
+                        <asp:Parameter Name="termino_empleo" Type="String" />
+                        <asp:Parameter Name="horario_empleo" Type="String" />
+                        <asp:Parameter Name="tiempo_empleo" Type="String" />
+                       
                     </UpdateParameters>
                 </asp:ObjectDataSource>
             </td>

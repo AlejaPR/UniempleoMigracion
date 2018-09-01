@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/view/MasterAspirante.master" AutoEventWireup="true" CodeFile="~/controller/TipoEmpleo.aspx.cs" Inherits="view_TipoEmpleo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+	 <script type="text/javascript" src="js/Redirecciones.js"></script> 
     <style type="text/css">
         .auto-style21 {
             font-size: x-large;

@@ -50,12 +50,14 @@ public partial class view_ExperienciaL : System.Web.UI.Page
 
 
         L_CalendarioError.Text = control.MensajeError;
-        Response.Redirect(control.Url);
-        
 
+
+        Response.Redirect(control.Url2);
         ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", control.Url, false);
         Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message", control.Url);
-    
+
+        
+
     }
 
 
@@ -74,7 +76,7 @@ public partial class view_ExperienciaL : System.Web.UI.Page
         saveLocation = Server.MapPath("~\\CertificacionesA") + "\\" + nombreArchivo;
 
         FU_certificado.PostedFile.SaveAs(saveLocation);
-        cd.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
+        //cd.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
 
         return "~\\CertificacionesA" + "\\" + nombreArchivo;
  

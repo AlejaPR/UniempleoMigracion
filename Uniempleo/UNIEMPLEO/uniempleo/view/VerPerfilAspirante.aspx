@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/view/MasterAspirante.master" AutoEventWireup="true" CodeFile="~/controller/VerPerfilAspirante.aspx.cs" Inherits="view_VerPerfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <style type="text/css">
+	<style type="text/css">
     .auto-style24 {
         text-align: center;
     }
@@ -92,7 +92,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <table class="auto-style1">
+	<table class="auto-style1">
     <tr>
         <td rowspan="4" class="auto-style47">
             <strong>
@@ -163,7 +163,7 @@
             </span>
             </strong>
             <br />
-            <asp:GridView ID="GV_puntos" runat="server" BackColor="White" HorizontalAlign="Center" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GV_puntos_SelectedIndexChanged"  AutoGenerateColumns="False" >
+            <asp:GridView ID="GV_puntos" runat="server" BackColor="White" HorizontalAlign="Center" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GV_puntos_SelectedIndexChanged"  AutoGenerateColumns="False" DataSourceID="odsMispuntos" >
                 <Columns>
                     <asp:BoundField DataField="cantidad" HeaderText="Puntos" />
                     <asp:BoundField DataField="fecha_puntuacion" HeaderText="Fecha" />
@@ -183,7 +183,6 @@
             <asp:ObjectDataSource ID="odsMispuntos" runat="server" SelectMethod="obtenerPuntos" TypeName="Data.DAspirante">
 				<SelectParameters>
 					<asp:SessionParameter DefaultValue="" Name="idperfil" SessionField="id" Type="Int32" />
-					<asp:SessionParameter DefaultValue="" Name="estado" SessionField="estado" Type="Int32" />
 				</SelectParameters>
 			</asp:ObjectDataSource>
             </td>
@@ -193,7 +192,7 @@
             <strong class="nuevoEstilo11">La personas dicen de mi:<br />
             <br />
             <br />
-            </strong><asp:GridView ID="GV_comentarios" HorizontalAlign="Center" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" EmptyDataText="No tienes comentarios aún" AutoGenerateColumns="False">
+            </strong><asp:GridView ID="GV_comentarios" HorizontalAlign="Center" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" EmptyDataText="No tienes comentarios aún" AutoGenerateColumns="False" DataSourceID="odsMisComentarios">
                 <Columns>
                     <asp:BoundField DataField="comentario" HeaderText="Comentario" />
                     <asp:BoundField DataField="fecha_comentario" HeaderText="Fecha" />
@@ -209,6 +208,11 @@
                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                 <SortedDescendingHeaderStyle BackColor="#00547E" />
             </asp:GridView>
+            <asp:ObjectDataSource ID="odsMisComentarios" runat="server" SelectMethod="obtenerComentarios" TypeName="Data.DAspirante">
+				<SelectParameters>
+					<asp:SessionParameter Name="idc" SessionField="id" Type="Int32" />
+				</SelectParameters>
+			</asp:ObjectDataSource>
             <strong>
             <br />
             <br />

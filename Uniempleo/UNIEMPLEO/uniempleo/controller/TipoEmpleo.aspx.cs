@@ -21,19 +21,19 @@ public partial class view_TipoEmpleo : System.Web.UI.Page
         UAspirante tipoEmpleo = new UAspirante();
         LAspirante registraTipo = new LAspirante();
 
+       tipoEmpleo = registraTipo.RTipoEmpleo(tipoEmpleo, (int)Session["id"], (RBL_termino.SelectedItem).ToString(), (DDL_horario.SelectedItem).ToString(), (RBL_tiempo.SelectedItem).ToString(), cargarHoja(), Session.SessionID);
 
-        
-        tipoEmpleo.IdRegistro = (int)Session["id"];
+        /*tipoEmpleo.IdRegistro = (int)Session["id"];
         tipoEmpleo.TerminoC = (RBL_termino.SelectedItem).ToString();
         tipoEmpleo.Horario = (DDL_horario.SelectedItem).ToString();
         tipoEmpleo.TiempoC = (RBL_tiempo.SelectedItem).ToString();
         tipoEmpleo.Hoja = cargarHoja();
-        tipoEmpleo.Session = Session.SessionID;
+        tipoEmpleo.Session = Session.SessionID;*/
 
         Response.Redirect(tipoEmpleo.Url);
 
-        //ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", tipoEmpleo.Url, false);
-        //Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message", tipoEmpleo.Url);
+       //ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", tipoEmpleo.Url, false);
+       //Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message", tipoEmpleo.Url);
 
 
     }
