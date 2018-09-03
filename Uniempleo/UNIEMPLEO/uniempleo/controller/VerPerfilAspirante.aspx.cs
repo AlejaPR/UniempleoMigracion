@@ -24,13 +24,21 @@ public partial class view_VerPerfil : System.Web.UI.Page
         int idp = (int)Session["id"];
         
 
-        Eperfil perfilcompleto = new Eperfil();
-        Dperfil perfil = new Dperfil();
-        perfilcompleto.Idperfil = int.Parse(idp.ToString());
-        perfil.obtenerPerfil(perfilcompleto);
-        DataTable perfilp = perfil.obtenerPerfil(perfilcompleto);
-        DL_perfil.DataSource = perfilp;
-        DL_perfil.DataBind();
+        //Pinta el perfil personal del aspirante
+        
+	//El DataTable se puede usar dentro de los controladores web :3
+        
+	UAspirante perfilcompleto = new UAspirante();
+        
+	LAspirante perfil = new LAspirante();
+        
+	perfilcompleto.IdUser = int.Parse(idp.ToString());
+        
+	DataTable perfilp = perfil.obtenerPerfil(perfilcompleto);
+        
+	DL_perfil.DataSource = perfilp;
+        
+	DL_perfil.DataBind();
 
         //GridView para los puntos
 
