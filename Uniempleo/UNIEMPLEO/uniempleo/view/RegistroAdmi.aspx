@@ -56,7 +56,7 @@
 	var charCode = (evt.which) ? evt.which : event.keyCode;
 
            
-	 if ((charCode > 32 && charCode < 60) || ((charCode > 62 && charCode < 126)))
+	 if ((charCode > 32 && charCode < 60) || ((charCode > 62 && charCode < 126)) || (charCode < 33 && charCode > 31) || (charCode < 9 && charCode > 7))
 
                 
 	return true;
@@ -152,8 +152,8 @@
             <td class="auto-style43"><strong>Rol:</strong></td>
             <td class="auto-style47">
                 <asp:DropDownList ID="DDL_rol" runat="server">
-                    <asp:ListItem Value="1">Administrador</asp:ListItem>
-                    <asp:ListItem Value="3">Empresa</asp:ListItem>
+                    <asp:ListItem Value="3">Administrador</asp:ListItem>
+                    <asp:ListItem Value="1">Empresa</asp:ListItem>
                     <asp:ListItem Value="2">Aspirante</asp:ListItem>
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="RFV_ClaveAdm0" runat="server" ControlToValidate="DDL_rol" ErrorMessage="*" ForeColor="#C24F4C" ValidationGroup="admi"></asp:RequiredFieldValidator>

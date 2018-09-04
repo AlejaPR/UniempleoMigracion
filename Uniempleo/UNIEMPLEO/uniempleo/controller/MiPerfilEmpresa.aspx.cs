@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class view_MiPerfilEmpresa : System.Web.UI.Page
 {
@@ -15,14 +17,21 @@ public partial class view_MiPerfilEmpresa : System.Web.UI.Page
             Response.Redirect("Loggin.aspx");
             Response.Cache.SetNoStore();
         }
+
         int ide = (int)Session["id"];
         EEmpresas perfile = new EEmpresas();
         DEmpresas perfilcompletoe = new DEmpresas();
-        perfile.IdEmpresa1 = int.Parse(ide.ToString());
+
+        
+        UEmpresa perfilE = new UEmpresa();
+        LEmpresa perfilCompletoE = new LEmpresa();
+        GV_ofertas.DataBind();
+
+        /*perfile.IdEmpresa1 = int.Parse(ide.ToString());
         perfilcompletoe.EmpresaMiPerfil(perfile);
         DataTable perfilempresa = perfilcompletoe.EmpresaMiPerfil(perfile);
         DL_miperfile.DataSource = perfilempresa;
-        DL_miperfile.DataBind();
+        DL_miperfile.DataBind();*/
 
         DataTable perfilge = perfilcompletoe.obtenerPuntosE(perfile);
         GV_puntos.DataSource = perfilge;
@@ -33,8 +42,9 @@ public partial class view_MiPerfilEmpresa : System.Web.UI.Page
 
         EEmpresas perfiloferta = new EEmpresas();
         DEmpresas perfilo = new DEmpresas();
-        perfiloferta.IdEmpresa1 = (int)Session["id"]; ;
+        perfiloferta.IdEmpresa1 = (int)Session["id"]; 
         perfilo.obtenermisOfertas(ide);
+
         DataTable consulta = perfilo.consultasuma(perfiloferta);
         LB_PuntosVaciosEmp.Visible = false;
         if (consulta.Rows.Count > 0)

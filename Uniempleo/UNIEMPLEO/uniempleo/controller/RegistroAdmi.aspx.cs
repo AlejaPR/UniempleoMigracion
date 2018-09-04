@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class view_RegistroAdmi_ : System.Web.UI.Page
 {
@@ -15,13 +17,13 @@ public partial class view_RegistroAdmi_ : System.Web.UI.Page
 
     protected void bt_agregar_Click(object sender, EventArgs e)
     {
-        DEmpresas empresa = new DEmpresas();
-        EEmpresas emp = new EEmpresas();
-        emp.Correo = tb_correo.Text;
-        emp.Usuario = tb_usuario.Text;
-        emp.Clave = tb_clave.Text;
-        emp.Rol = int.Parse(DDL_rol.SelectedValue.ToString());
-        empresa.registroEmpresa(emp);
-        Response.Redirect("PrincipalAdmi.aspx");
+        
+        UAdministrador registroAd = new UAdministrador();
+        LAdministrador registrar = new LAdministrador();
+       
+
+        registroAd = registrar.RegistrarAdm(tb_correo.Text.ToString(), tb_usuario.Text.ToString(), tb_clave.Text.ToString(), int.Parse(DDL_rol.SelectedValue.ToString()));
+        
+        Response.Redirect(registroAd.Url);
     }
 }

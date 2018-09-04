@@ -91,115 +91,8 @@
         <tr>
             <td>&nbsp;</td>
             <td rowspan="3">
-                <asp:GridView ID="GV_hoja_emp" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="auto-style40" DataSourceID="ODS_obtener_pempresa" GridLines="Horizontal" AutoGenerateColumns="False">
+                <asp:GridView ID="GV_hoja_emp" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="auto-style40" DataSourceID="ODS_obtener_pempresa" GridLines="Horizontal" AutoGenerateEditButton="True">
                     <AlternatingRowStyle BackColor="#F7F7F7" />
-                    <Columns>
-                        <asp:TemplateField ShowHeader="False">
-                            <EditItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" ValidationGroup="modificae"></asp:LinkButton>
-                                &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar"></asp:LinkButton>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Codigo">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox9" runat="server" MaxLength="25" Text='<%# Bind("id_empresa") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label9" runat="server" Text='<%# Bind("id_empresa") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Nombre Empresa">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="CambiaNomEmp" runat="server" Text='<%# Bind("nombre_empresa") %>' MaxLength="20" onkeypress="return Letras(event)"></asp:TextBox>
-                                <strong>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CambiaNomEmp" ErrorMessage="*" ForeColor="#EF4836" ValidationGroup="modificae"></asp:RequiredFieldValidator>
-                                </strong>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre_empresa") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Forma Juridica">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="CambiaFormaJ" runat="server" MaxLength="15" Text='<%# Bind("forma_juridica") %>' onkeypress="return Letras(event)"></asp:TextBox>
-                                <strong>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CambiaFormaJ" ErrorMessage="*" ForeColor="#EF4836" ValidationGroup="modificae"></asp:RequiredFieldValidator>
-                                </strong>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("forma_juridica") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Direccion Empresa">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="CambiaDireccionE" runat="server" MaxLength="15" Text='<%# Bind("direccion_empresa") %>' onkeypress="return Direccion(event)"></asp:TextBox>
-                                <strong>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CambiaDireccionE" ErrorMessage="*" ForeColor="#EF4836" ValidationGroup="modificae"></asp:RequiredFieldValidator>
-                                </strong>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("direccion_empresa") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Telefono Empresa">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="CambiaTelefonoE" runat="server" MaxLength="10" Text='<%# Bind("telefono_empresa") %>' onkeypress="return Numeros(event)"></asp:TextBox>
-                                <strong>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CambiaTelefonoE" ErrorMessage="*" ForeColor="#EF4836" ValidationGroup="modificae"></asp:RequiredFieldValidator>
-                                </strong>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("telefono_empresa") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sector Economico">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="CambiaSectorE" runat="server" MaxLength="15" Text='<%# Bind("sector_economico") %>' onkeypress="return Letras(event)"></asp:TextBox>
-                                <strong>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CambiaSectorE" ErrorMessage="*" ForeColor="#EF4836" ValidationGroup="modificae"></asp:RequiredFieldValidator>
-                                </strong>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("sector_economico") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Numero Empleados">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="CambiaNumE" runat="server" MaxLength="10" Text='<%# Bind("num_empleados") %>' onkeypress="return Numeros(event)"></asp:TextBox>
-                                <strong>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CambiaNumE" ErrorMessage="*" ForeColor="#EF4836" ValidationGroup="modificae"></asp:RequiredFieldValidator>
-                                </strong>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label6" runat="server" Text='<%# Bind("num_empleados") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Nit">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="CambiaNit" runat="server" MaxLength="12" Text='<%# Bind("nit") %>' onkeypress="return Caracteres(event)"></asp:TextBox>
-                                <strong>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CambiaNit" ErrorMessage="*" ForeColor="#EF4836" ValidationGroup="modificae"></asp:RequiredFieldValidator>
-                                </strong>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label7" runat="server" Text='<%# Bind("nit") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Tipo Empresa">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="CambiaTipoE" runat="server" MaxLength="15" Text='<%# Bind("tipo_empresa") %>' onkeypress="return Letras(event)"></asp:TextBox>
-                                <strong>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CambiaTipoE" ErrorMessage="*" ForeColor="#EF4836" ValidationGroup="modificae"></asp:RequiredFieldValidator>
-                                </strong>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label8" runat="server" Text='<%# Bind("tipo_empresa") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
                     <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
                     <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
                     <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
@@ -210,20 +103,21 @@
                     <SortedDescendingCellStyle BackColor="#D8D8F0" />
                     <SortedDescendingHeaderStyle BackColor="#3E3277" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_obtener_pempresa" runat="server" SelectMethod="obtenerEmpresa" TypeName="Dmodificar" UpdateMethod="EditarEmpresa">
+                <asp:ObjectDataSource ID="ODS_obtener_pempresa" runat="server" SelectMethod="obtenerEmpresa" TypeName="Data.DEmpresa" UpdateMethod="EditarEmpresa">
                     <SelectParameters>
-                        <asp:SessionParameter Name="idper" SessionField="id" Type="Int32" />
+                        <asp:SessionParameter Name="idemp" SessionField="id" Type="Int32" />
                     </SelectParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="Id" Type="Int32" />
-                        <asp:Parameter Name="nombre" Type="String" />
+					<UpdateParameters>
+                        <asp:Parameter Name="IdE" Type="Int32" />
+                        <asp:Parameter Name="nombreE" Type="String" />
                         <asp:Parameter Name="forma" Type="String" />
-                        <asp:Parameter Name="direccion" Type="String" />
-                        <asp:Parameter Name="telefono" Type="String" />
+                        <asp:Parameter Name="direccionE" Type="String" />
+                        <asp:Parameter Name="telefonoE" Type="String" />
                         <asp:Parameter Name="sector" Type="String" />
                         <asp:Parameter Name="empleados" Type="String" />
                         <asp:Parameter Name="nit" Type="String" />
                         <asp:Parameter Name="tipo" Type="String" />
+                       
                     </UpdateParameters>
                 </asp:ObjectDataSource>
             </td>

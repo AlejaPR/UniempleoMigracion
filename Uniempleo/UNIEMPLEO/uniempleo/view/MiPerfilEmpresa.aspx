@@ -103,6 +103,9 @@
         .auto-style57 {
             font-size: medium;
         }
+    	.auto-style58 {
+			font-size: large;
+		}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -114,7 +117,7 @@
             <td class="auto-style36">
                 <asp:Image ID="Image10" runat="server" Height="80px" Width="80px" ImageUrl="~/imagenes/coronitapuntos.png" />
                 <br />
-                <asp:DataList ID="DL_TotalPuntosEmp" runat="server" HorizontalAlign="Center" CssClass="auto-style55">
+                <asp:DataList ID="DL_TotalPuntosEmp" runat="server" HorizontalAlign="Center" CssClass="auto-style58" Height="185px" Width="142px">
                     <ItemTemplate>
                         <asp:Label ID="LB_PuntosTotalesEmp" runat="server" CssClass="auto-style55" Text='<%# Eval("f_suma_puntos_empresa") %>'></asp:Label>
                     </ItemTemplate>
@@ -123,7 +126,7 @@
                 <asp:Label ID="LB_PuntosVaciosEmp" runat="server" CssClass="auto-style55"></asp:Label>
             </td>
             <td colspan="2" class="auto-style47">
-                <asp:DataList ID="DL_miperfile" runat="server" CssClass="auto-style44" CellPadding="4" ForeColor="#333333">
+                <asp:DataList ID="DL_miperfile" runat="server" CssClass="auto-style44" CellPadding="4" ForeColor="#333333" DataSourceID="odsMiperfil">
                     <AlternatingItemStyle BackColor="White" />
                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -146,6 +149,11 @@
                     </ItemTemplate>
                     <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                 </asp:DataList>
+            	<asp:ObjectDataSource ID="odsMiperfil" runat="server" SelectMethod="EmpresaMiPerfil" TypeName="Data.DEmpresa">
+					<SelectParameters>
+						<asp:SessionParameter Name="idEmpresa" SessionField="id" Type="Int32" />
+					</SelectParameters>
+				</asp:ObjectDataSource>
             </td>
             <td class="auto-style51">&nbsp;</td>
         </tr>
@@ -202,7 +210,7 @@
             <td colspan="2" class="auto-style47">
                 <br />
                 OFERTAS PUBLICADAS
-                <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="auto-style54" DataSourceID="ODS_misOfertas" EmptyDataText="No tienes ofertas publicadas">
+                <asp:GridView ID="GV_ofertas" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="auto-style54" EmptyDataText="No tienes ofertas publicadas" DataSourceID="ODS_misOfertas">
                     <FooterStyle BackColor="White" ForeColor="#000066" />
                     <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
@@ -213,9 +221,9 @@
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#00547E" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_misOfertas" runat="server" SelectMethod="obtenermisOfertas" TypeName="DEmpresas">
+                <asp:ObjectDataSource ID="ODS_misOfertas" runat="server" SelectMethod="obtenermisOfertas" TypeName="Data.DEmpresa">
                     <SelectParameters>
-                        <asp:Parameter Name="idp" Type="Int32" />
+                        <asp:SessionParameter Name="idO" SessionField="id" Type="Int32" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
             </td>

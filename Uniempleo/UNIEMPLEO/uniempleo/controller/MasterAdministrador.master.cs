@@ -9,20 +9,16 @@ public partial class view_MasterAdministrador : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["id"] == null || Session["nombre"] == null || Session["rol"] == null)
-        {
-            Response.Redirect("Loggin.aspx");
-            Response.Cache.SetNoStore();
-        }
+        
 
-        DUser user = new DUser();
+        /*DUser user = new DUser();
         Euser datos = new Euser();
         datos.Sesion1 = Session.SessionID;
         user.cerrarSesion(datos);
         if (Session["id"] == null || Session["nombre"] == null || Session["rol"] == null)
         {
             Response.Redirect("Loggin.aspx");
-        }
+        }*/
 
     }
 
