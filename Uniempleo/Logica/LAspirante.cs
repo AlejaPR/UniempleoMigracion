@@ -378,5 +378,40 @@ namespace Logica
 
         }
 
+	public UAspirante Validaragenda(Int32 idPrueba)
+        {
+
+            
+            DAspirante validarsoli = new DAspirante();
+            DataTable validaC = new DataTable();
+            UAspirante validar = new UAspirante();
+            validaC = validarsoli.ValidarAgendame(idPrueba);
+            
+
+            DAspirante mensaje = new DAspirante();
+
+            if (validaC.Rows.Count > 0)
+            {
+                validar.Mensaje = "Ya has solicitado una cita, no puedes enviar la solicitud de nuevo";
+                validar.Url = "VerOfertas";
+
+                
+            }
+            return validar;
+        }
+
+        public UAspirante MensajeCita(String mensaje, Int32 idAspirante, Int32 IdOferta, DateTime fechaSolicitud, String Sesion)
+        {
+            DAspirante mensajeC = new DAspirante();
+            DataTable mensajecita = mensajeC.Mensaje(mensaje, idAspirante, IdOferta, fechaSolicitud, Sesion);
+
+            UAspirante enviarcita = new UAspirante();
+
+            //enviarm.Url = @"<script type='text/javascript'>Redir_VerOfertas();</script>";
+            enviarcita.Url = "VerOfertas.aspx";
+            enviarcita.Mensaje = "Registrado correctamente";
+            return enviarcita;
+        }
+
     }
 }

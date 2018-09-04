@@ -40,35 +40,26 @@ public partial class view_OfertaIndividual : System.Web.UI.Page
     }
 
     protected void LinkButton1_Click(object sender, EventArgs e)
-    {
-        Eofertas validar = new Eofertas();
-        Dofertas validarsoli = new Dofertas();
-        validar.Idprueba = (int)Session["id"];
-        DataTable validate = validarsoli.ValidarAgendame(validar);
+    {   
+        //valida si ya tiene peticion de citas
         int idp = (int)Session["id"];
-        Eofertas oferta = new Eofertas();
-        Dofertas mensaje = new Dofertas();
-        if (validate.Rows.Count > 0)
-        {
-            LB_ErrorAgendaAsp.Text = "Ya has solicitado una cita, no puedes enviar la solicitud de nuevo";
-            
-        }
-        else
-        {
-            oferta.Mensaje = "Quiero agendar una cita";
-            oferta.Idaspirante = (int)Session["id"];
-            oferta.Idoferta = Int32.Parse(Convert.ToString(Request.QueryString["valor"]));
-            oferta.Fechasolicitud = DateTime.Now;
-            oferta.Sesion = Session.SessionID;
-            mensaje.Mensaje(oferta);
-            Page.Response.Write("<script language='JavaScript'>window.alert('Tu mensaje ha sido enviado, en unos dias la empresa te contactará ');</script>");
-            //Response.Redirect("VerOfertas.aspx");
-        }
+        UAspirante validar = new UAspirante();
+        LAspirante validarsoli = new LAspirante();
+        validar = validarsoli.Validaragenda(int.Parse(idp.ToString()));
+        
+        //envia mensaje a empresa
+        UAspirante enviaM = new UAspirante();
+        LAspirante validarmsj = new LAspirante();
+        String Mensaje = "Quiero agendar una cita";
 
+        enviaM = validarmsj.MensajeCita( Mensaje.ToString(), (int)Session["id"], Int32.Parse(Convert.ToString(Request.QueryString["valor"])),
+        DateTime.Now, Session.SessionID);
 
-        //Response.Redirect("OfertaIndividual.aspx");
+        Page.Response.Write("<script language='JavaScript'>window.alert('Tu mensaje ha sido enviado, en unos dias la empresa te contactará ');</script>");
+        Response.Redirect(enviaM.Url);
+        
 
     }
 
-    
+
 }

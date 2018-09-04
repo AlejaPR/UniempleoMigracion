@@ -643,6 +643,75 @@ namespace Data
         }
 
 
+	public DataTable ValidarAgendame(Int32 Idprueba)//
+        {
+            DataTable datosR = new DataTable();
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("uniempleo.f_validar_quiero_agendarme", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = Idprueba;
+
+
+
+                conectar.Open();
+                dataAdapter.Fill(datosR);
+
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return datosR;
+        }
+
+        public DataTable Mensaje(String mensaje, Int32 idAspirante, Int32 IdOferta, DateTime fechaSolicitud, String Sesion)//
+        {
+            DataTable datosR = new DataTable();
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("uniempleo.mensaje_oferta", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                dataAdapter.SelectCommand.Parameters.Add("_mensaje", NpgsqlDbType.Text).Value = mensaje;
+                dataAdapter.SelectCommand.Parameters.Add("_idaspirante", NpgsqlDbType.Integer).Value = idAspirante;
+                dataAdapter.SelectCommand.Parameters.Add("_idoferta", NpgsqlDbType.Integer).Value = IdOferta;
+                dataAdapter.SelectCommand.Parameters.Add("_fecha_solicitud", NpgsqlDbType.Date).Value = fechaSolicitud;
+                dataAdapter.SelectCommand.Parameters.Add("_sesion", NpgsqlDbType.Text).Value = Sesion;
+
+
+
+                conectar.Open();
+                dataAdapter.Fill(datosR);
+
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (mensaje != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return datosR;
+        }
+    
+
 
     }
 }
